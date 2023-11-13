@@ -13,7 +13,12 @@ const BlogsSchema = new mongoose.Schema(
     },
 
     tags: {
-      type: [],
+      type: Array,
+      required: true,
+    },
+
+    category: {
+      type: String,
       required: true,
     },
 

@@ -1,6 +1,6 @@
 const User = require("../model/user.model");
 
-const signup = async (req, res) => {
+const signup = async (req, res, next) => {
   const { name, username, email, password } = req.body;
   const data = User({
     name: name,
@@ -14,11 +14,11 @@ const signup = async (req, res) => {
     res.status(200).json("Data Submitted");
   } catch (error) {
     console.log(error);
-    res.status(401).json("Failed");
+    next(error);
   }
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
   const { username, password } = req.body;
 
   try {
@@ -32,7 +32,7 @@ const login = async (req, res) => {
       res.status(402).json("Wrong Credentials");
     }
   } catch (error) {
-    res.status(402).json("Wrong Credentials");
+    next(error);
   }
 };
 

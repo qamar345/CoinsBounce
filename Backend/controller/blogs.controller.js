@@ -39,4 +39,15 @@ const byCategory = async (req, res) => {
   }
 };
 
-module.exports = { addBlogs, blogs, byCategory };
+const deleteBlog = async (req, res) => {
+  const { key } = req.body;
+
+  try {
+    const data = await Blogs.deleteOne({ _id: key });
+    res.status(202).json(data);
+  } catch (error) {
+    res.status(401).json(error);
+  }
+};
+
+module.exports = { addBlogs, blogs, byCategory, deleteBlog };

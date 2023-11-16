@@ -1,7 +1,7 @@
 const Blogs = require("../model/blog.model");
 
 const addBlogs = async (req, res) => {
-  const { title, content, tags, category, author } = req.body;
+  const { title, content, tags, category, author, imageURL } = req.body;
 
   const data = Blogs({
     title: title,
@@ -9,6 +9,7 @@ const addBlogs = async (req, res) => {
     tags: tags,
     category: category,
     author: author,
+    imageURL: imageURL,
   });
 
   try {
